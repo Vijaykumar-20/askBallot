@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { BookOpen, ChevronRight, Info, Maximize2, ArrowRight } from 'lucide-react';
 import styles from './Explainers.module.css';
 import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 
 export default function Explainers({ data, fact, onOpenAssistant }) {
   const [selectedId, setSelectedId] = useState(0);
@@ -39,8 +40,15 @@ export default function Explainers({ data, fact, onOpenAssistant }) {
             
             <div className={styles.contentBody}>
               {data[selectedId].image && (
-                <div className={styles.imageFrame}>
-                  <img src={data[selectedId].image} alt={data[selectedId].title} className={styles.explainerImage} />
+                <div className={styles.imageFrame} style={{ position: 'relative', height: '200px', width: '100%', marginBottom: '1.5rem', borderRadius: '12px', overflow: 'hidden' }}>
+                  <Image 
+                    src={data[selectedId].image} 
+                    alt={data[selectedId].title} 
+                    fill
+                    style={{ objectFit: 'cover' }}
+                    className={styles.explainerImage} 
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  />
                   <div className={styles.imageOverlay}><Maximize2 size={14} /> View Details</div>
                 </div>
               )}
