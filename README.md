@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🗳️ Ask-Ballot: AI-Powered Election Assistant
 
 **Ask-Ballot** is an interactive, gamified civic education platform and AI-powered election assistant designed to demystify the Indian General Election process. Built for voters of all ages, it empowers citizens with essential knowledge—from voter registration (Form 6) to understanding Electronic Voting Machines (EVMs) and VVPATs. 
