@@ -1,0 +1,233 @@
+.panel {
+  position: fixed;
+  bottom: 6rem;
+  right: 2rem;
+  width: 400px;
+  height: 600px;
+  max-width: calc(100vw - 4rem);
+  display: flex;
+  flex-direction: column;
+  z-index: 2000;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  border-radius: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px) saturate(180%);
+}
+
+.header {
+  padding: 1.5rem;
+  background: linear-gradient(135deg, var(--ashoka-blue) 0%, #0000FF 100%);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.header::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 150px;
+  height: 150px;
+  background: var(--saffron);
+  opacity: 0.2;
+  filter: blur(40px);
+  border-radius: 50%;
+}
+
+.headerInfo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  z-index: 1;
+}
+
+.aiBadge {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.headerText h3 {
+  font-size: 1.1rem;
+  font-weight: 900;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.onlineStatus {
+  font-size: 0.7rem;
+  font-weight: 700;
+  opacity: 0.9;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.2rem;
+}
+
+.statusDot {
+  width: 6px;
+  height: 6px;
+  background: #22c55e;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #22c55e;
+}
+
+.closeBtn {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: white;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  z-index: 1;
+}
+
+.closeBtn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.messages {
+  flex-grow: 1;
+  padding: 1.5rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  background: linear-gradient(180deg, rgba(248, 250, 252, 0.5) 0%, rgba(255, 255, 255, 0.5) 100%);
+}
+
+.message {
+  display: flex;
+  gap: 0.75rem;
+  max-width: 85%;
+}
+
+.avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.bot .avatar { background: var(--ashoka-blue); color: white; }
+.user .avatar { background: var(--saffron); color: white; }
+
+.user { align-self: flex-end; flex-direction: row-reverse; }
+
+.bubble {
+  padding: 1rem 1.25rem;
+  border-radius: 1.25rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  font-weight: 500;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+}
+
+.bot .bubble {
+  background: white;
+  color: #1e293b;
+  border: 1px solid #f1f5f9;
+  border-top-left-radius: 0.25rem;
+}
+
+.user .bubble {
+  background: var(--saffron);
+  color: white;
+  border-top-right-radius: 0.25rem;
+  box-shadow: 0 10px 20px rgba(255, 153, 51, 0.2);
+}
+
+.inputArea {
+  padding: 1.5rem;
+  background: white;
+  border-top: 1px solid #f1f5f9;
+}
+
+.inputWrapper {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  background: #f8fafc;
+  padding: 0.5rem;
+  border-radius: 1.25rem;
+  border: 1px solid #e2e8f0;
+  transition: all 0.3s;
+}
+
+.inputWrapper:focus-within {
+  background: white;
+  border-color: var(--ashoka-blue);
+  box-shadow: 0 0 0 3px rgba(0, 0, 128, 0.05);
+}
+
+.inputArea input {
+  flex-grow: 1;
+  background: transparent;
+  border: none;
+  padding: 0.75rem 0.5rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  outline: none;
+  color: var(--ashoka-blue);
+}
+
+.sendButton {
+  background: var(--ashoka-blue);
+  color: white;
+  border: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.sendButton:hover:not(:disabled) {
+  background: var(--saffron);
+  transform: scale(1.05);
+}
+
+.sendButton:disabled { opacity: 0.5; }
+
+.typing span {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: var(--ashoka-blue);
+  border-radius: 50%;
+  margin: 0 2px;
+  animation: typing 1.4s infinite ease-in-out;
+}
+
+.typing span:nth-child(2) { animation-delay: 0.2s; }
+.typing span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes typing {
+  0%, 100% { transform: translateY(0); opacity: 0.4; }
+  50% { transform: translateY(-4px); opacity: 1; }
+}

@@ -1,0 +1,139 @@
+{
+  "en": {
+    "timeline": [
+      { 
+        "stage": "Voter Registration", 
+        "date": "Ongoing", 
+        "description": "Your democratic journey begins here. Without being on the Electoral Roll, you cannot vote. This process ensures only valid citizens participate in the sovereign exercise of power.",
+        "color": "#FF9933",
+        "tasks": ["Fill Form 6 online", "Upload Age/Address Proof", "Verify name in Draft Roll"]
+      },
+      { 
+        "stage": "ECI Announcement", 
+        "date": "March 16", 
+        "description": "The Election Commission of India sets the stage. The Model Code of Conduct (MCC) is enforced, ensuring fair play and preventing the government from announcing new schemes to influence voters.",
+        "color": "#FFCC00",
+        "tasks": ["Check Poll Schedule", "Locate Polling Booth", "Observe MCC updates"]
+      },
+      { 
+        "stage": "Nominations", 
+        "date": "March 20 - April 15", 
+        "description": "Candidates step forward. They file affidavits disclosing their criminal records, assets, liabilities, and educational qualifications (Form 26). Transparency is key.",
+        "color": "#A0C000",
+        "tasks": ["Read Candidate Affidavits", "Check Education/Assets", "Know Your Candidate (KYC)"]
+      },
+      { 
+        "stage": "Campaigning", 
+        "date": "April 15 - May 30", 
+        "description": "The air filled with debate and manifestos. Parties present their vision for the next 5 years. This is your time to evaluate which vision aligns with your aspirations.",
+        "color": "#128807",
+        "tasks": ["Read Party Manifestos", "Attend Local Rallies", "Check Fact-Check Portals"]
+      },
+      { 
+        "stage": "The Big Vote", 
+        "date": "April 19 - June 1", 
+        "description": "The moment of truth. You walk into the polling booth, your identity is verified, and you cast your secret vote on the EVM. The VVPAT slip confirms your choice.",
+        "color": "#000080",
+        "tasks": ["Carry Valid Photo ID", "Check VVPAT Slip", "Wear your ink with pride!"]
+      }
+    ],
+    "explainers": [
+      { 
+        "title": "What is VVPAT?", 
+        "content": "The Voter Verifiable Paper Audit Trail (VVPAT) is an independent system attached to the EVM that allows you to verify that your vote was cast as intended. It records your vote on a paper slip which is then stored in a sealed box.",
+        "image": "/images/vvpat_demonstration_1777192803393.png",
+        "bullets": [
+          "The slip is visible for 7 seconds through a transparent window.",
+          "It contains the candidate's serial number, name, and symbol.",
+          "Slips are used for audit verification to ensure 100% accuracy."
+        ]
+      },
+      { 
+        "title": "The Indelible Ink", 
+        "content": "A symbolic mark of your democratic power. This purple ink contains Silver Nitrate, which reacts with skin to create a permanent mark that cannot be washed or scrubbed off.",
+        "image": "/images/indelible_ink_voter_1777192845390.png",
+        "bullets": [
+          "Applied to the left index finger before voting.",
+          "Lasts for weeks, preventing duplicate voting.",
+          "A badge of honor for every responsible citizen."
+        ]
+      },
+      { 
+        "title": "Finding Your Booth", 
+        "content": "The ECI ensures that every voter has a polling station within 2km of their residence. You can locate yours using the EPIC number on the Voter Helpline App or official portal.",
+        "image": "/images/polling_booth_map_1777192927564.png",
+        "bullets": [
+          "Use your 10-digit EPIC number for an instant search.",
+          "Check the Voter Slip for your specific Room/Booth number.",
+          "Voters are provided with a 'Voter Information Slip' before poll day."
+        ]
+      },
+      { 
+        "title": "Why Elections Matter?", 
+        "content": "Elections are the foundation of democracy. By voting, you choose your representatives who will make laws on your behalf for the next 5 years.",
+        "bullets": [
+          "Ensures government accountability.",
+          "Directly impacts public policy and infrastructure.",
+          "Gives every citizen an equal voice regardless of status."
+        ]
+      },
+      { 
+        "title": "Need More Help?", 
+        "content": "The Indian election landscape is vast and constantly evolving. If your specific question about a constituency, candidate detail, or local procedure isn't covered here, our AI Election Assistant is ready to help.",
+        "cta": "Talk to askBallot AI",
+        "bullets": [
+          "Instant answers on Candidate Affidavits.",
+          "Detailed steps for NRI or Service Voter registration.",
+          "Real-time clarification on Code of Conduct."
+        ]
+      }
+    ],
+    "quiz_rounds": [
+      {
+        "name": "Round 1: The Sovereign Spark",
+        "description": "Foundation of democracy: Registration & Rights.",
+        "questions": [
+          { "question": "Which form should a first-time voter fill to register?", "options": ["Form 6", "Form 7", "Form 8", "Form 10"], "answer": "Form 6", "explanation": "Form 6 is the gateway for all new registrations!" },
+          { "question": "What is the minimum age to be eligible to vote in India?", "options": ["16 Years", "18 Years", "21 Years", "25 Years"], "answer": "18 Years", "explanation": "Every citizen above 18 has the right to vote." },
+          { "question": "Can you vote if your name is not on the Electoral Roll but you have a Voter ID?", "options": ["Yes, definitely", "No, impossible", "Only if the officer allows", "Only in rural areas"], "answer": "No, impossible", "explanation": "Presence on the Electoral Roll is mandatory, even with an ID!" }
+        ]
+      },
+      {
+        "name": "Round 2: The Campaign Trail",
+        "description": "Evaluating leaders: Codes & Conduct.",
+        "questions": [
+          { "question": "What is the Model Code of Conduct (MCC)?", "options": ["A set of laws", "Guidelines for candidates", "Police rules", "Court orders"], "answer": "Guidelines for candidates", "explanation": "MCC ensures level playing field for all candidates." },
+          { "question": "Where can you check a candidate's criminal records and assets?", "options": ["Local News", "Candidate ID", "ECI Affidavits (Form 26)", "WhatsApp"], "answer": "ECI Affidavits (Form 26)", "explanation": "Transparency is provided via official affidavits." },
+          { "question": "What is the limit for campaigning before polling day?", "options": ["12 Hours", "24 Hours", "48 Hours", "No limit"], "answer": "48 Hours", "explanation": "The 'Silence Period' begins 48 hours before the poll ends." }
+        ]
+      },
+      {
+        "name": "Round 3: The Decision Day",
+        "description": "The moment of truth: Machine & Audit.",
+        "questions": [
+          { "question": "What does VVPAT stand for?", "options": ["Voter Verified Paper Audit Trail", "Voter Value Paper Audit Town", "Visual Voter Paper Access Tool", "Voter Voice Paper Audit Trail"], "answer": "Voter Verified Paper Audit Trail", "explanation": "It's the audit trail that secures your vote!" },
+          { "question": "For how long is the VVPAT slip visible after casting a vote?", "options": ["3 Seconds", "7 Seconds", "15 Seconds", "Until you move"], "answer": "7 Seconds", "explanation": "You have 7 golden seconds to verify your choice." },
+          { "question": "What is the function of the Indelible Ink?", "options": ["Identity Proof", "To show pride", "To prevent duplicate voting", "Styling"], "answer": "To prevent duplicate voting", "explanation": "The silver-nitrate ink ensures one-voter-one-vote." }
+        ]
+      }
+    ],
+    "sidebar": { "checklist": "Voter Checklist", "stats": "Live Statistics", "help": "Need Help?" },
+    "fact": "Indian elections use 100% VVPAT-linked EVMs for audit verification."
+  },
+  "hi": {
+    "timeline": [ { "stage": "मतदाता पंजीकरण", "color": "#FF9933", "tasks": ["ऑनलाइन फॉर्म 6 भरें"] } ],
+    "explainers": [ { "title": "VVPAT क्या है?", "content": "VVPAT एक स्वतंत्र प्रणाली है।" } ],
+    "quiz_rounds": [
+      {
+        "name": "चरण 1: संप्रभु स्पार्क",
+        "questions": [
+          { "question": "पंजीकरण के लिए कौन सा फॉर्म भरना चाहिए?", "options": ["फॉर्म 6", "फॉर्म 7", "फॉर्म 8", "फॉर्म 10"], "answer": "फॉर्म 6", "explanation": "नए पंजीकरण के लिए फॉर्म 6 है!" },
+          { "question": "मतदान के लिए न्यूनतम आयु क्या है?", "options": ["16 वर्ष", "18 वर्ष", "21 वर्ष", "25 वर्ष"], "answer": "18 वर्ष", "explanation": "भारत में मतदान की आयु 18 वर्ष है।" },
+          { "question": "क्या बिना मतदाता सूची में नाम के वोट डाल सकते हैं?", "options": ["हाँ", "नहीं", "अधिकारी की अनुमति पर", "शायद"], "answer": "नहीं", "explanation": "मतदाता सूची में नाम होना अनिवार्य है!" }
+        ]
+      }
+    ],
+    "sidebar": { "checklist": "मतदाता चेकलिस्ट", "stats": "लाइव आंकड़े", "help": "मदद चाहिए?" },
+    "fact": "भारतीय चुनाव ऑडिट सत्यापन के लिए 100% VVPAT-लिंक्ड EVM का उपयोग करते हैं।"
+  }
+}

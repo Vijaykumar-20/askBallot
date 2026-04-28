@@ -1,0 +1,146 @@
+.footer {
+  background: linear-gradient(180deg, var(--ashoka-blue) 0%, #000040 100%);
+  color: rgba(255, 255, 255, 0.8);
+  padding: 6rem 2rem 2rem;
+  margin-top: 5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footerContent {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 4rem;
+  flex-wrap: wrap;
+}
+
+.brandCol {
+  flex: 1;
+  min-width: 300px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.chakraWrapper {
+  width: 40px;
+  height: 40px;
+}
+
+.chakraSpin {
+  animation: spin 20s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.logoTitle {
+  font-size: 1.75rem;
+  font-weight: 900;
+  color: white;
+  letter-spacing: -0.04em;
+}
+
+.mission {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.socials {
+  display: flex;
+  gap: 1.25rem;
+}
+
+.socials a {
+  color: white;
+  opacity: 0.5;
+  transition: opacity 0.2s;
+}
+
+.socials a:hover {
+  opacity: 1;
+}
+
+.linkGrid {
+  display: flex;
+  gap: 4rem;
+  flex-wrap: wrap;
+}
+
+.linkCol {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.linkCol h4 {
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.1em;
+}
+
+.linkCol a, .footerBtn {
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: color 0.2s;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.linkCol a:hover, .footerBtn:hover {
+  color: var(--saffron);
+}
+
+.bottomBar {
+  max-width: 1300px;
+  margin: 4rem auto 0;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.copyright {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: white;
+}
+
+.disclaimer {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: rgba(255, 153, 51, 0.6);
+  max-width: 500px;
+}
+
+@media (max-width: 768px) {
+  .footerContent { flex-direction: column; }
+  .linkGrid { gap: 2.5rem; width: 100%; justify-content: space-between; }
+  .bottomBar { text-align: center; justify-content: center; }
+}

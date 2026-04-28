@@ -1,0 +1,288 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  height: 4.5rem;
+  display: flex;
+  align-items: center;
+  margin: 0.5rem;
+  border-radius: 1.25rem;
+  padding: 0 1rem;
+}
+
+.navContent {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+.chakraWrapper { width: 32px; height: 32px; }
+
+.logoText span:first-child {
+  font-size: 1.25rem;
+  font-weight: 900;
+}
+
+.region {
+  font-size: 0.6rem;
+  font-weight: 800;
+}
+
+.desktopMenu {
+  display: none;
+  gap: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .desktopMenu { display: flex; }
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  opacity: 0.7;
+  text-decoration: none;
+  color: inherit;
+}
+
+.langWrapper {
+  position: relative;
+}
+
+.langDropdown {
+  position: absolute;
+  top: 110%;
+  right: 0;
+  width: 120px;
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+  border-radius: 0.75rem;
+  z-index: 150;
+  border: 1px solid var(--border);
+}
+
+.langDropdown button {
+  padding: 0.5rem;
+  text-align: left;
+  background: none;
+  border: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 0.4rem;
+}
+
+.langDropdown button:hover {
+  background: rgba(0,0,0,0.03);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.langBtn, .loginBtn, .userBadge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  border: 1px solid var(--border);
+  background: white;
+  cursor: pointer;
+}
+
+.loginBtn {
+  background: var(--ashoka-blue);
+  color: white;
+  border: none;
+}
+
+.userBadge {
+  background: rgba(18, 136, 7, 0.1);
+  color: var(--indian-green);
+  border-color: var(--indian-green);
+}
+
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 80, 0.4);
+  backdrop-filter: blur(8px);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.ticketModal {
+  width: 100%;
+  max-width: 450px;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  box-shadow: 0 30px 60px -12px rgba(0,0,0,0.25), 0 18px 36px -18px rgba(0,0,0,0.3);
+  position: relative;
+}
+
+.ticketStub {
+  background: var(--ashoka-blue);
+  color: white;
+  padding: 1.5rem 2rem;
+  position: relative;
+  text-align: center;
+}
+
+.perforation {
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  right: 0;
+  height: 10px;
+  background-image: radial-gradient(circle, white 4px, transparent 5px);
+  background-size: 15px 10px;
+  z-index: 10;
+}
+
+.ticketStub h3 {
+  font-size: 1.25rem;
+  font-weight: 900;
+  margin-bottom: 0.25rem;
+  letter-spacing: 0.05em;
+}
+
+.ticketStub p {
+  font-size: 0.7rem;
+  opacity: 0.7;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.ticketMain {
+  padding: 2.5rem;
+  background-image: radial-gradient(rgba(0,0,128,0.02) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.hologram {
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #FF9933, #FFFFFF, #128807);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ashoka-blue);
+  opacity: 0.8;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.closeModal {
+  background: rgba(0,0,0,0.05);
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.ticketSubmit {
+  width: 100%;
+  padding: 1.25rem;
+  background: var(--ashoka-blue);
+  color: white;
+  border: none;
+  border-radius: 0.75rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.ticketFooter {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px dashed var(--border);
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-align: center;
+  opacity: 0.4;
+  text-transform: uppercase;
+}
+
+.main {
+  flex-grow: 1;
+  padding-top: 6.5rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+.chatTrigger {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1.25rem;
+  border-radius: 1rem;
+  border: none;
+  color: white;
+  background: linear-gradient(135deg, #FF9933 0%, #128807 100%);
+  z-index: 90;
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+
+.footer {
+  padding: 3rem 1.5rem;
+  text-align: center;
+  font-size: 0.8rem;
+  opacity: 0.5;
+}
+
+@media (max-width: 768px) {
+  .logoText span:first-child { font-size: 1rem; }
+  .navbar { margin: 0; border-radius: 0; top: 0; }
+  .chatTrigger span { display: none; }
+  .chatTrigger { padding: 1rem; border-radius: 50%; }
+}
