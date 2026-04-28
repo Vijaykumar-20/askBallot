@@ -2,7 +2,6 @@ import { Outfit, Inter } from "next/font/google";
 import { GoogleAnalytics } from '@next/third-parties/google';
 import "./globals.css";
 import Shell from "@/components/Layout/Shell";
-import { LanguageProvider } from '@/context/LanguageContext';
 import "@/lib/firebase"; // Initialize Firebase
 
 const outfit = Outfit({
@@ -24,11 +23,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${outfit.variable} ${inter.variable}`}>
-        <LanguageProvider>
-          <Shell>
-            {children}
-          </Shell>
-        </LanguageProvider>
+        <Shell>
+          {children}
+        </Shell>
         <GoogleAnalytics gaId="G-ASKBALLOT123" />
       </body>
     </html>

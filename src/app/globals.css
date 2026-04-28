@@ -81,3 +81,38 @@ a:hover {
 button {
   cursor: pointer;
 }
+/* Google Translate UI Overrides */
+.goog-te-banner-frame.skiptranslate, 
+.goog-te-gadget-icon,
+.goog-te-menu-value span:nth-child(3),
+.goog-te-menu-value span:nth-child(5) {
+  display: none !important;
+}
+
+.goog-te-gadget-simple {
+  background-color: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  font-family: inherit !important;
+}
+
+.goog-te-menu-value {
+  margin: 0 !important;
+}
+
+.goog-te-menu-value span {
+  color: var(--ashoka-blue) !important;
+  font-weight: 700 !important;
+  font-size: 0.85rem !important;
+}
+
+body {
+  top: 0 !important;
+  position: static !important;
+}
+
+/* Fix for Google Translate changing font sizes */
+font {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}

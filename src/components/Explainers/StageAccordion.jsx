@@ -40,14 +40,14 @@ export default function Explainers({ data, fact, onOpenAssistant }) {
             
             <div className={styles.contentBody}>
               {data[selectedId].image && (
-                <div className={styles.imageFrame} style={{ position: 'relative', height: '200px', width: '100%', marginBottom: '1.5rem', borderRadius: '12px', overflow: 'hidden' }}>
+                <div className={styles.imageFrame}>
                   <Image 
                     src={data[selectedId].image} 
                     alt={data[selectedId].title} 
-                    fill
-                    style={{ objectFit: 'cover' }}
+                    width={800}
+                    height={450}
+                    style={{ width: '100%', height: 'auto' }}
                     className={styles.explainerImage} 
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
                   <div className={styles.imageOverlay}><Maximize2 size={14} /> View Details</div>
                 </div>

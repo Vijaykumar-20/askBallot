@@ -1,0 +1,100 @@
+.vaultContainer {
+  background: white;
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+  border: 1px solid #f1f5f9;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.02), inset 0 2px 0 rgba(255,255,255,0.5);
+  margin-top: 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.vaultHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+  color: var(--ashoka-blue);
+}
+
+.vaultIconWrapper {
+  background: rgba(0, 0, 128, 0.05);
+  padding: 0.5rem;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vaultHeader h3 {
+  font-size: 1.1rem;
+  font-weight: 800;
+  margin: 0;
+}
+
+.uploadArea {
+  border: 2px dashed #cbd5e1;
+  border-radius: 1rem;
+  padding: 1.5rem 1rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: #f8fafc;
+}
+
+.uploadArea:hover {
+  border-color: var(--saffron);
+  background: #fffaf5;
+}
+
+.uploadArea.uploading {
+  border-style: solid;
+  border-color: var(--india-green);
+  background: #f0fdf4;
+}
+
+.uploadIcon {
+  color: #94a3b8;
+  margin-bottom: 0.5rem;
+}
+
+.uploadText {
+  font-size: 0.85rem;
+  color: #475569;
+  font-weight: 500;
+  margin: 0;
+}
+
+.uploadText strong {
+  color: var(--ashoka-blue);
+}
+
+.progressBar {
+  width: 100%;
+  height: 6px;
+  background: #e2e8f0;
+  border-radius: 3px;
+  margin-top: 1rem;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: var(--india-green);
+  transition: width 0.3s ease;
+}
+
+.successMessage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  color: var(--india-green);
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-top: 1rem;
+}
+
+.hiddenInput {
+  display: none;
+}

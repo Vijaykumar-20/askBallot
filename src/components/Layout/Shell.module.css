@@ -100,6 +100,33 @@
   background: rgba(0,0,0,0.03);
 }
 
+.translateWrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  border: 1px solid var(--border);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+}
+
+.translateWrapper:hover {
+  border-color: var(--ashoka-blue);
+  box-shadow: 0 8px 24px rgba(0,0,128,0.08);
+}
+
+.globeIcon {
+  color: var(--ashoka-blue);
+  flex-shrink: 0;
+}
+
+.translateElement {
+  display: block;
+  min-width: 100px;
+}
+
 .actions {
   display: flex;
   align-items: center;
@@ -280,9 +307,57 @@
   opacity: 0.5;
 }
 
+.mobileToggle {
+  display: flex;
+  background: none;
+  border: none;
+  color: var(--ashoka-blue);
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+@media (min-width: 1024px) {
+  .mobileToggle { display: none; }
+}
+
+.mobileMenu {
+  position: absolute;
+  top: 110%;
+  left: 0;
+  right: 0;
+  background: white;
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+  border: 1px solid var(--border);
+  z-index: 100;
+}
+
+.mobileNavLink {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--ashoka-blue);
+  padding: 0.5rem;
+  border-radius: 0.75rem;
+  transition: background 0.2s;
+}
+
+.mobileNavLink:active {
+  background: rgba(0,0,128,0.05);
+}
+
 @media (max-width: 768px) {
   .logoText span:first-child { font-size: 1rem; }
-  .navbar { margin: 0; border-radius: 0; top: 0; }
+  .navbar { margin: 0.5rem; border-radius: 1rem; top: 0; }
   .chatTrigger span { display: none; }
   .chatTrigger { padding: 1rem; border-radius: 50%; }
+  .main { padding-top: 5.5rem; }
 }
+

@@ -6,10 +6,13 @@ import Timeline from '@/components/Timeline/Timeline';
 import Explainers from '@/components/Explainers/StageAccordion';
 import ElectionQuiz from '@/components/Quiz/ElectionQuiz';
 import electionData from '@/data/india-election.json';
-import { useLanguage } from '@/context/LanguageContext';
 import { useAssistant } from '@/context/AssistantContext';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Search, MapPin, FileCheck, ShieldCheck, Phone, Info, ArrowRight, Trophy, Ticket, Fingerprint, Sparkles, Lightbulb, Zap, UserPlus, FileSearch, Send, CheckCircle, Map, Eye, Flag, ExternalLink, Activity, Award, UserCheck, CheckSquare, BarChart3, Users, Landmark, Shield, Bot } from 'lucide-react';
+
+import PollingMap from '@/components/Map/PollingMap';
+import DocumentVault from '@/components/Storage/DocumentVault';
+import VoterInfo from '@/components/Civic/VoterInfo';
 
 const WISDOM_FACTS = [
   "India's election is the largest democratic event in human history.",
@@ -24,9 +27,8 @@ const WISDOM_FACTS = [
 ];
 
 export default function Home() {
-  const { lang } = useLanguage();
   const { openAssistant, toggleAssistant } = useAssistant();
-  const data = electionData[lang] || electionData.en;
+  const data = electionData.en;
   const [wisdomIndex, setWisdomIndex] = useState(0);
 
   useEffect(() => {
@@ -82,6 +84,10 @@ export default function Home() {
             <div className={styles.wisdomFooter}><div className={styles.wisdomBar} /></div>
           </motion.div>
         </div>
+        
+        <div id="polling-station">
+          <PollingMap />
+        </div>
 
         <div id="hub" className={styles.handbookSectionFlowGlass}>
           <div className={styles.handbookHeader}>
@@ -121,7 +127,7 @@ export default function Home() {
 
             <div className={styles.sectionHeader}>
               <div className={styles.sectionIcon}><Trophy size={20} /></div>
-              <h2>{data.sidebar.checklist === 'Voter Checklist' ? "Voter's Quest" : "मतदाता की खोज"}</h2>
+              <h2>Voter&apos;s Quest</h2>
             </div>
             <div className={styles.questContent}>
               <Timeline data={data.timeline} />
@@ -198,6 +204,9 @@ export default function Home() {
               </div>
             </div>
           </div>
+          
+          <DocumentVault />
+          <VoterInfo />
         </aside>
       </div>
 
