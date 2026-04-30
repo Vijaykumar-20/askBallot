@@ -52,7 +52,7 @@ Handles conversational AI queries. Rate limited to 20 req/min per IP.
 
 1. **Clone & Install**
    ```bash
-   git clone <YOUR_REPO_URL>
+   git clone https://github.com/Vijaykumar-20/askBallot.git
    npm install
    ```
 
