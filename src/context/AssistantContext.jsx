@@ -4,7 +4,15 @@ import React, { createContext, useContext, useState } from 'react';
 
 const AssistantContext = createContext();
 
-export function AssistantProvider({ children }) {
+/**
+ * AssistantProvider Component
+ * 
+ * Context provider that manages the global state of the AI assistant's visibility.
+ * 
+ * @param {Object} props
+ * @param {React.ReactNode} props.children
+ */
+export const AssistantProvider = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const openAssistant = () => setIsOpen(true);

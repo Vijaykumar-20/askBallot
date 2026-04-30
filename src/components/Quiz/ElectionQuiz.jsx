@@ -11,6 +11,16 @@ const REACTIONS = {
   incorrect: ['🤔', '📚', '💪', '✨']
 };
 
+/**
+ * ElectionQuiz Component
+ * 
+ * An interactive quiz application that tests user knowledge of election procedures.
+ * Supports multiple rounds, score tracking, animated reactions, and a final result summary.
+ * 
+ * @param {Object} props - Component properties
+ * @param {Array} props.data - Quiz data organized into rounds and questions
+ * @returns {JSX.Element|null} The rendered Quiz component or null if no data
+ */
 export default function ElectionQuiz({ data }) {
   const rounds = data || []; // Expected quiz_rounds array
   const [currentRoundIdx, setCurrentRoundIdx] = useState(0);
@@ -24,7 +34,7 @@ export default function ElectionQuiz({ data }) {
   const reactionCounter = useRef(0);
 
   const currentRound = rounds[currentRoundIdx];
-  const currentQuestion = currentRound?.questions[currentQuestionIdx];
+  const currentQuestion = currentRound?.questions?.[currentQuestionIdx];
   const totalQuestions = rounds.reduce((acc, r) => acc + r.questions.length, 0);
 
   useEffect(() => {
@@ -77,6 +87,8 @@ export default function ElectionQuiz({ data }) {
   };
 
   const restartQuiz = () => window.location.reload();
+
+  if (!rounds || rounds.length === 0) return <div>No quiz available</div>;
 
   if (isIntroing && !showResult) {
     return (

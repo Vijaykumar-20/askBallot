@@ -3,7 +3,7 @@
  * Covers: rendering, option selection, scoring, round progression, result screen
  */
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, act } from '@testing-library/react';
 import ElectionQuiz from '@/components/Quiz/ElectionQuiz';
 
 // Mock canvas-confetti
@@ -73,13 +73,13 @@ describe('ElectionQuiz Component', () => {
   it('should show question after intro timeout', () => {
     render(<ElectionQuiz data={MOCK_QUIZ_DATA} />);
     // Fast-forward 3 seconds (intro duration)
-    vi.advanceTimersByTime(3000);
+    act(() => { vi.advanceTimersByTime(3000); });
     expect(screen.getByText('What form should a first-time voter fill?')).toBeInTheDocument();
   });
 
   it('should render all options for a question', () => {
     render(<ElectionQuiz data={MOCK_QUIZ_DATA} />);
-    vi.advanceTimersByTime(3000);
+    act(() => { vi.advanceTimersByTime(3000); });
     expect(screen.getByText('Form 6')).toBeInTheDocument();
     expect(screen.getByText('Form 7')).toBeInTheDocument();
     expect(screen.getByText('Form 8')).toBeInTheDocument();
@@ -88,7 +88,7 @@ describe('ElectionQuiz Component', () => {
 
   it('should show explanation when clicking the correct answer', () => {
     render(<ElectionQuiz data={MOCK_QUIZ_DATA} />);
-    vi.advanceTimersByTime(3000);
+    act(() => { vi.advanceTimersByTime(3000); });
     fireEvent.click(screen.getByText('Form 6'));
     expect(screen.getByText('Correct!')).toBeInTheDocument();
     expect(screen.getByText('Form 6 is for new voter registration.')).toBeInTheDocument();
@@ -96,14 +96,14 @@ describe('ElectionQuiz Component', () => {
 
   it('should show "Not Quite!" when clicking wrong answer', () => {
     render(<ElectionQuiz data={MOCK_QUIZ_DATA} />);
-    vi.advanceTimersByTime(3000);
+    act(() => { vi.advanceTimersByTime(3000); });
     fireEvent.click(screen.getByText('Form 7'));
     expect(screen.getByText('Not Quite!')).toBeInTheDocument();
   });
 
   it('should disable options after selection', () => {
     render(<ElectionQuiz data={MOCK_QUIZ_DATA} />);
-    vi.advanceTimersByTime(3000);
+    act(() => { vi.advanceTimersByTime(3000); });
     fireEvent.click(screen.getByText('Form 6'));
     // All option buttons should be disabled
     const buttons = screen.getAllByRole('button');
@@ -117,7 +117,7 @@ describe('ElectionQuiz Component', () => {
 
   it('should advance to next question on Continue click', () => {
     render(<ElectionQuiz data={MOCK_QUIZ_DATA} />);
-    vi.advanceTimersByTime(3000);
+    act(() => { vi.advanceTimersByTime(3000); });
     fireEvent.click(screen.getByText('Form 6'));
     fireEvent.click(screen.getByText('Continue'));
     expect(screen.getByText('What is the minimum voting age?')).toBeInTheDocument();
@@ -131,16 +131,39 @@ describe('ElectionQuiz Component', () => {
 
   it('should show round counter during questions', () => {
     render(<ElectionQuiz data={MOCK_QUIZ_DATA} />);
-    vi.advanceTimersByTime(3000);
+    act(() => { vi.advanceTimersByTime(3000); });
     expect(screen.getByText('Round 1 of 2')).toBeInTheDocument();
   });
 
   it('should calculate total questions across rounds', () => {
     render(<ElectionQuiz data={MOCK_QUIZ_DATA} />);
-    vi.advanceTimersByTime(3000);
+    act(() => { vi.advanceTimersByTime(3000); });
     // Total questions = 2 + 1 = 3
     // We can verify this through the result screen later
     // For now, verify the component renders without crashing
     expect(screen.getByText(/Round 1 of 2/)).toBeInTheDocument();
+  });
+
+  it('should play through and restart quiz', () => {
+    delete window.location;
+    window.location = { reload: vi.fn() };
+
+    render(<ElectionQuiz data={MOCK_QUIZ_DATA} />);
+    act(() => { vi.advanceTimersByTime(3000); });
+    
+    // Round 1
+    fireEvent.click(screen.getByText('Form 6'));
+    fireEvent.click(screen.getByText('Continue'));
+    fireEvent.click(screen.getByText('18'));
+    fireEvent.click(screen.getByText('Continue'));
+    
+    // Round 2
+    act(() => { vi.advanceTimersByTime(3000); });
+    fireEvent.click(screen.getByText('Voter Verified Paper Audit Trail'));
+    fireEvent.click(screen.getByText('Finish Quest'));
+
+    // Restart
+    fireEvent.click(screen.getByText(/New Quest/i));
+    expect(window.location.reload).toHaveBeenCalled();
   });
 });

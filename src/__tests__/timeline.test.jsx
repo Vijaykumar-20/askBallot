@@ -48,9 +48,9 @@ const MOCK_TIMELINE_DATA = [
 describe('Timeline Component', () => {
   it('should render all timeline stages', () => {
     render(<Timeline data={MOCK_TIMELINE_DATA} />);
-    expect(screen.getByText('Voter Registration')).toBeInTheDocument();
-    expect(screen.getByText('ECI Announcement')).toBeInTheDocument();
-    expect(screen.getByText('Nominations')).toBeInTheDocument();
+    expect(screen.getAllByText('Voter Registration')[0]).toBeInTheDocument();
+    expect(screen.getAllByText('ECI Announcement')[0]).toBeInTheDocument();
+    expect(screen.getAllByText('Nominations')[0]).toBeInTheDocument();
   });
 
   it('should show progress counter', () => {
@@ -90,8 +90,8 @@ describe('Timeline Component', () => {
     render(<Timeline data={MOCK_TIMELINE_DATA} />);
     // Unlock stage 2
     fireEvent.click(screen.getByText(/Explore Next Stage/));
-    // Click on stage 1 node (the "Voter Registration" text)
-    fireEvent.click(screen.getByText('Voter Registration'));
+    // Click on stage 1 node
+    fireEvent.click(screen.getAllByRole('button')[0]);
     // Should go back to stage 1 details
     expect(screen.getByText('Register to vote using Form 6.')).toBeInTheDocument();
   });
@@ -99,7 +99,7 @@ describe('Timeline Component', () => {
   it('should not allow clicking locked stages', () => {
     render(<Timeline data={MOCK_TIMELINE_DATA} />);
     // Click on stage 3 directly (which is locked)
-    fireEvent.click(screen.getByText('Nominations'));
+    fireEvent.click(screen.getAllByRole('button')[2]);
     // Should still show stage 1 (not stage 3)
     expect(screen.getByText('Register to vote using Form 6.')).toBeInTheDocument();
     expect(screen.getByText('Stage 1')).toBeInTheDocument();

@@ -5,6 +5,14 @@ import { UploadCloud, CheckCircle, Shield, FileText } from 'lucide-react';
 import { motion } from 'framer-motion';
 import styles from './DocumentVault.module.css';
 
+/**
+ * DocumentVault Component
+ * 
+ * Provides a secure, mock interface for uploading sensitive voter documents (like Voter ID).
+ * Simulates an encryption and upload process to assure users of security practices.
+ * 
+ * @returns {JSX.Element} The rendered DocumentVault component
+ */
 export default function DocumentVault() {
   const [isUploading, setIsUploading] = useState(false);
   const [progress, setProgress] = useState(0);
@@ -52,6 +60,7 @@ export default function DocumentVault() {
         onChange={handleFileChange} 
         className={styles.hiddenInput}
         accept="image/*,.pdf"
+        aria-label="Upload document"
       />
 
       <div 

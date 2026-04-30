@@ -4,6 +4,14 @@ import React, { useState } from 'react';
 import { Search, MapPin, Landmark } from 'lucide-react';
 import styles from './VoterInfo.module.css';
 
+/**
+ * VoterInfo Component
+ * 
+ * Provides a search interface for users to find their local election representatives
+ * and polling locations based on their zip code or city.
+ * 
+ * @returns {JSX.Element} The rendered VoterInfo component
+ */
 export default function VoterInfo() {
   const [address, setAddress] = useState('');
   const [loading, setLoading] = useState(false);
@@ -42,11 +50,13 @@ export default function VoterInfo() {
           placeholder="Enter your Zip Code or City..."
           className={styles.searchInput}
           onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
+          aria-label="Search address or zip code"
         />
         <button 
           className={styles.searchButton}
           onClick={handleSearch}
           disabled={loading}
+          aria-label="Search for election information"
         >
           {loading ? "Searching Civic API..." : "Find My Representatives"}
         </button>

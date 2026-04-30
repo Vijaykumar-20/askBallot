@@ -64,7 +64,7 @@ export default function AssistantPanel({ isOpen, onClose }) {
             <div className={styles.onlineStatus}><div className={styles.statusDot} /> Active Now</div>
           </div>
         </div>
-        <button onClick={onClose} className={styles.closeBtn}>
+        <button onClick={onClose} className={styles.closeBtn} aria-label="Close Assistant">
           <X size={20} />
         </button>
       </div>
@@ -106,7 +106,7 @@ export default function AssistantPanel({ isOpen, onClose }) {
             placeholder="Ask anything about the election..."
             autoFocus
           />
-          <button type="submit" className={styles.sendButton} disabled={isLoading}>
+          <button type="submit" className={styles.sendButton} disabled={isLoading} aria-label="Send message">
             <Send size={18} />
           </button>
         </div>

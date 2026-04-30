@@ -5,6 +5,16 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Trophy, Star, Lock, Unlock, ChevronRight, CheckCircle2, BookOpen, Shield, UserCheck, Users, Vote } from 'lucide-react';
 import styles from './Timeline.module.css';
 
+/**
+ * Timeline Component
+ * 
+ * Renders an interactive, gamified progress timeline representing the election cycle.
+ * Users can navigate through stages sequentially. Future stages are locked until the active level is reached.
+ * 
+ * @param {Object} props - Component properties
+ * @param {Array} props.data - Array of timeline stages (e.g., voter registration, announcement, voting day)
+ * @returns {JSX.Element} The rendered Timeline component
+ */
 export default function Timeline({ data }) {
   const [activeLevel, setActiveLevel] = useState(0);
   const [unlockedLevels, setUnlockedLevels] = useState([0]);

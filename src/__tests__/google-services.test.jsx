@@ -28,12 +28,13 @@ describe('Google Services Components', () => {
     const uploadArea = screen.getByText(/Click to Upload/i);
     expect(uploadArea).toBeDefined();
     
-    fireEvent.click(uploadArea);
+    const input = screen.getByLabelText(/Upload document/i);
+    fireEvent.change(input, { target: { files: [new File([''], 'test.pdf')] } });
     // Simulation starts
     expect(screen.getByText(/Encrypting and Uploading/i)).toBeDefined();
     
     await waitFor(() => {
-      expect(screen.getByText(/Document Secured in Cloud Storage/i)).toBeDefined();
+      expect(screen.getByText(/Document Secured in Encrypted Vault/i)).toBeDefined();
     }, { timeout: 3000 });
   });
 
@@ -48,8 +49,29 @@ describe('Google Services Components', () => {
     expect(screen.getByText(/Searching Civic API/i)).toBeDefined();
     
     await waitFor(() => {
-      expect(screen.getByText(/General Election Demo/i)).toBeDefined();
+      expect(screen.getByText(/General Election 2026/i)).toBeDefined();
       expect(screen.getByText(/Kendriya Vidyalaya, New Delhi/i)).toBeDefined();
     }, { timeout: 3500 });
+  });
+
+  it('handles empty search input gracefully', () => {
+    render(<VoterInfo />);
+    const button = screen.getByText(/Find My Representatives/i);
+    fireEvent.click(button);
+    expect(screen.queryByText(/Searching Civic API/i)).toBeNull();
+  });
+
+  it('renders DocumentVault and simulates upload failure', async () => {
+    const mockMath = Object.create(global.Math);
+    mockMath.random = () => 0.9; // Force failure
+    global.Math = mockMath;
+
+    render(<DocumentVault />);
+    const input = screen.getByLabelText(/Upload document/i);
+    fireEvent.change(input, { target: { files: [new File([''], 'test.pdf')] } });
+    
+    await waitFor(() => {
+      expect(screen.queryByText(/Encrypting and Uploading/i)).toBeNull();
+    }, { timeout: 3000 });
   });
 });

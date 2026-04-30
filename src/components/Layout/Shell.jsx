@@ -9,6 +9,16 @@ import AssistantPanel from '../Chat/AssistantPanel';
 import { AssistantProvider, useAssistant } from '@/context/AssistantContext';
 import Image from 'next/image';
 
+/**
+ * ShellContent Component
+ * 
+ * Inner layout component that consumes AssistantContext. 
+ * Renders the global navigation bar, Google Translate widget, and wraps the main content.
+ * 
+ * @param {Object} props - Component properties
+ * @param {React.ReactNode} props.children - Page content to render inside the shell
+ * @returns {JSX.Element} The rendered ShellContent component
+ */
 function ShellContent({ children }) {
   const { isOpen, closeAssistant } = useAssistant();
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
@@ -19,6 +29,7 @@ function ShellContent({ children }) {
       if (window.google && window.google.translate) {
         new window.google.translate.TranslateElement({
           pageLanguage: 'en',
+          includedLanguages: 'en,hi,ta,te,mr,bn,gu,kn,ml,pa,or,as,ur',
           layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE,
           autoDisplay: true,
         }, 'google_translate_element');
@@ -46,7 +57,7 @@ function ShellContent({ children }) {
           <a href="#" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }} style={{ textDecoration: 'none' }}>
             <div className={styles.logo}>
               <div className={styles.chakraWrapper}>
-                <Image src="/icon.png" alt="AskBallot Logo" width={32} height={32} />
+                <Image src="/icon.png" alt="AskBallot Logo" width={32} height={32} priority={true} />
               </div>
               <div className={styles.logoText}>
                 <span className="gradient-experience">askBallot</span>
@@ -68,7 +79,7 @@ function ShellContent({ children }) {
               <Languages size={18} className={styles.globeIcon} />
               <div id="google_translate_element" className={styles.translateElement}></div>
             </div>
-            <button className={styles.mobileToggle} onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+            <button className={styles.mobileToggle} onClick={() => setMobileMenuOpen(!mobileMenuOpen)} aria-label="Toggle mobile menu">
               {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
@@ -103,6 +114,16 @@ function ShellContent({ children }) {
   );
 }
 
+/**
+ * Shell Component
+ * 
+ * The root layout wrapper for the application. 
+ * It wraps the application in context providers (like AssistantProvider) and sets up the layout shell.
+ * 
+ * @param {Object} props - Component properties
+ * @param {React.ReactNode} props.children - Main application content
+ * @returns {JSX.Element} The provider-wrapped layout shell
+ */
 export default function Shell({ children }) {
   return (
     <AssistantProvider>

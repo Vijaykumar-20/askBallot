@@ -1,0 +1,13 @@
+
+ RUN  v4.1.5 /Users/vijay/.gemini/antigravity/scratch/ask-ballot
+
+ ❯ src/__tests__/google-services.test.jsx (3 tests | 3 failed) 3535ms
+     × renders PollingMap component 15ms
+     × renders DocumentVault and simulates upload 11ms
+     × renders VoterInfo and simulates search 3507ms
+
+ Test Files  1 failed (1)
+      Tests  3 failed (3)
+   Start at  12:01:33
+   Duration  4.02s (transform 52ms, setup 27ms, import 158ms, tests 3.54s, environment 242ms)
+

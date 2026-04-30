@@ -1,0 +1,37 @@
+
+ RUN  v4.1.5 /Users/vijay/.gemini/antigravity/scratch/ask-ballot
+
+ ❯ src/__tests__/api-chat.test.js (0 test)
+ ✓ src/__tests__/contexts-and-data.test.jsx (15 tests) 43ms
+ ❯ src/__tests__/election-quiz.test.jsx (10 tests | 9 failed) 42ms
+     ✓ should show round intro initially 19ms
+     × should show question after intro timeout 5ms
+     × should render all options for a question 2ms
+     × should show explanation when clicking the correct answer 2ms
+     × should show "Not Quite!" when clicking wrong answer 2ms
+     × should disable options after selection 2ms
+     × should advance to next question on Continue click 2ms
+     × should handle empty data gracefully 3ms
+     × should show round counter during questions 1ms
+     × should calculate total questions across rounds 1ms
+ ❯ src/__tests__/timeline.test.jsx (10 tests | 1 failed) 83ms
+     × should render all timeline stages 32ms
+     ✓ should show progress counter 5ms
+     ✓ should display first stage details by default 3ms
+     ✓ should show tasks for active stage 3ms
+     ✓ should have "Explore Next Stage" button on the latest unlocked stage 4ms
+     ✓ should unlock next stage when clicking "Explore Next Stage" 10ms
+     ✓ should allow navigating back to previously unlocked stages 8ms
+     ✓ should not allow clicking locked stages 4ms
+     ✓ should unlock all stages sequentially 7ms
+     ✓ should not show "Explore Next Stage" on the last stage 6ms
+ ❯ src/__tests__/google-services.test.jsx (3 tests | 3 failed) 3540ms
+     × renders PollingMap component 17ms
+     × renders DocumentVault and simulates upload 12ms
+     × renders VoterInfo and simulates search 3510ms
+
+ Test Files  4 failed | 1 passed (5)
+      Tests  13 failed | 25 passed (38)
+   Start at  12:00:54
+   Duration  4.28s (transform 247ms, setup 163ms, import 720ms, tests 3.71s, environment 1.82s)
+

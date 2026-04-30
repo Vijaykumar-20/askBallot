@@ -16,9 +16,11 @@ vi.mock('@google/generative-ai', () => {
   const mockGetGenerativeModel = vi.fn().mockReturnValue({ startChat: mockStartChat });
 
   return {
-    GoogleGenerativeAI: vi.fn().mockImplementation(() => ({
-      getGenerativeModel: mockGetGenerativeModel,
-    })),
+    GoogleGenerativeAI: vi.fn().mockImplementation(function() {
+      return {
+        getGenerativeModel: mockGetGenerativeModel,
+      };
+    }),
     __mockSendMessage: mockSendMessage,
     __mockStartChat: mockStartChat,
   };

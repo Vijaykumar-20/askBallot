@@ -4,8 +4,15 @@ import React, { useEffect, useRef, useState } from 'react';
 import { MapPin } from 'lucide-react';
 import { motion } from 'framer-motion';
 import styles from './PollingMap.module.css';
-import { initGoogleMaps } from '@/lib/googleMaps';
 
+/**
+ * PollingMap Component
+ * 
+ * Displays a map interface using an external Map container. 
+ * Allows users to locate nearby polling stations or relevant geographic election data.
+ * 
+ * @returns {JSX.Element} The rendered PollingMap component
+ */
 export default function PollingMap() {
   const mapRef = useRef(null);
   const [isLoaded, setIsLoaded] = useState(false);
