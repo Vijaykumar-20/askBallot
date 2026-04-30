@@ -27,28 +27,11 @@ const WISDOM_FACTS = [
   "National Voters Day (25 January) reminds everyone that being enrolled and voting is a sign of empowerment."
 ];
 
-const POWER_NODES = [
-  { title: "Democratic Power", desc: "One vote can change a nation. Decisions are often made by less than 1000 votes.", icon: Zap, trend: "+ Strong Impact" },
-  { title: "Fraud Protection", desc: "VVPAT verification, Indelible Ink, and 24/7 C-Vigil monitoring ensure total integrity.", icon: Shield, trend: "🛡️ 100% Secure" },
-  { title: "Voter Portal", desc: "Instant registration portal. Update details or apply online securely.", icon: ExternalLink, link: "https://voters.eci.gov.in/", label: "voters.eci.gov.in" },
-  { title: "ECI Helpline", desc: "Contact the National Contact Centre (1950) for any voter grievance.", icon: Phone, link: "tel:1950", label: "1950 Helpline" }
-];
-
-const CHECKLIST_ITEMS = [
-  "EPIC/Aadhaar Ready",
-  "Constituency Mapped",
-  "Polling Station Located",
-  "Candidate List Reviewed",
-  "Verify NVSP Name",
-  "Final Slip Downloaded"
-];
-
 /**
  * Home Page Component
  * 
  * The main landing page for Ask-Ballot.
- * Orchestrates the hero section and lazily loads major feature components
- * such as Timeline, Explainers, ElectionQuiz, and Civic Hub modules to optimize initial bundle size.
+ * Orchestrates the hero section and lazily loads major feature components.
  * 
  * @returns {JSX.Element} The rendered homepage
  */
@@ -68,6 +51,22 @@ export default function Home() {
     document.getElementById('timeline')?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const powerNodes = [
+    { title: "Democratic Power", desc: "One vote can change a nation. Decisions are often made by less than 1000 votes.", icon: Zap, trend: "+ Strong Impact" },
+    { title: "Fraud Protection", desc: "VVPAT verification, Indelible Ink, and 24/7 C-Vigil monitoring ensure total integrity.", icon: Shield, trend: "🛡️ 100% Secure" },
+    { title: "Voter Portal", desc: "Instant registration portal. Update details or apply online securely.", icon: ExternalLink, link: "https://voters.eci.gov.in/", label: "voters.eci.gov.in" },
+    { title: "ECI Helpline", desc: "Contact the National Contact Centre (1950) for any voter grievance.", icon: Phone, link: "tel:1950", label: "1950 Helpline" }
+  ];
+
+  const checklistItems = [
+    "EPIC/Aadhaar Ready",
+    "Constituency Mapped",
+    "Polling Station Located",
+    "Candidate List Reviewed",
+    "Verify NVSP Name",
+    "Final Slip Downloaded"
+  ];
+
   return (
     <div className={styles.container}>
       <section className={styles.hero}>
@@ -82,8 +81,8 @@ export default function Home() {
             <h1 className={styles.mainTitle}>Lead the <span className="gradient-experience">Democratic</span> <br/> Revolution <span className={styles.voteText}>with Your Vote</span></h1>
             <p className={styles.heroDescription}>Decode the mechanics of the Indian General Election. From Form 6 to the VVPAT beep, we turn complex rules into your personal quest for power.</p>
             <div className={styles.heroActions}>
-              <button className={styles.primaryBtn} onClick={navigateToQuest} aria-label="Unlock your voter quest">Unlock My Quest <ArrowRight size={20} /></button>
-              <button className={styles.secondaryBtn} onClick={() => window.open('https://electoralsearch.eci.gov.in/', '_blank')} aria-label="Check your name in the voter list on ECI website">Check Voter List <Search size={18} /></button>
+              <button className={styles.primaryBtn} onClick={navigateToQuest}>Unlock My Quest <ArrowRight size={20} /></button>
+              <button className={styles.secondaryBtn} onClick={() => window.open('https://electoralsearch.eci.gov.in/', '_blank')}>Check Voter List <Search size={18} /></button>
             </div>
           </div>
           <motion.div initial={{ x: 50, opacity: 0 }} animate={{ x: 0, opacity: 1 }} className={styles.wisdomCard + " glass"}>
@@ -107,7 +106,7 @@ export default function Home() {
             <h3 className={styles.handbookTitle}>Civic Power Hub</h3>
           </div>
           <div className={styles.flowChain}>
-            {POWER_NODES.map((node, i) => (
+            {powerNodes.map((node, i) => (
               <motion.div key={i} initial={{ y: 20, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ delay: i * 0.1 }} className={styles.flowNodeGlass}>
                 <div className={styles.nodeIconWrapperGlass}><node.icon size={22} /><div className={styles.nodeNumberGlass}>{i + 1}</div></div>
                 <div className={styles.nodeContent}>
@@ -164,7 +163,7 @@ export default function Home() {
               <h3>Voter Readiness</h3>
             </div>
             <div className={styles.checklistAnimated}>
-              {CHECKLIST_ITEMS.map((item, i) => (
+              {checklistItems.map((item, i) => (
                 <motion.div 
                   key={i}
                   initial={{ x: -10, opacity: 0 }}

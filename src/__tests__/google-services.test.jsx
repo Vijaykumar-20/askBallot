@@ -62,9 +62,7 @@ describe('Google Services Components', () => {
   });
 
   it('renders DocumentVault and simulates upload failure', async () => {
-    const mockMath = Object.create(global.Math);
-    mockMath.random = () => 0.9; // Force failure
-    global.Math = mockMath;
+    const mathSpy = vi.spyOn(Math, 'random').mockReturnValue(0.9); // Force failure
 
     render(<DocumentVault />);
     const input = screen.getByLabelText(/Upload document/i);
@@ -73,5 +71,7 @@ describe('Google Services Components', () => {
     await waitFor(() => {
       expect(screen.queryByText(/Encrypting and Uploading/i)).toBeNull();
     }, { timeout: 3000 });
+
+    mathSpy.mockRestore();
   });
 });

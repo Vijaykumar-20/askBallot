@@ -1,12 +1,14 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
 import AssistantPanel from '@/components/Chat/AssistantPanel';
 
-global.fetch = vi.fn();
-
 describe('AssistantPanel Component', () => {
   beforeEach(() => {
-    vi.clearAllMocks();
+    vi.stubGlobal('fetch', vi.fn());
+  });
+
+  afterEach(() => {
+    vi.unstubAllGlobals();
   });
 
   it('renders nothing when closed', () => {
@@ -16,6 +18,7 @@ describe('AssistantPanel Component', () => {
 
   it('renders and handles input submission successfully', async () => {
     fetch.mockResolvedValueOnce({
+      ok: true,
       json: async () => ({ role: 'model', parts: [{ text: 'Mock AI response' }] })
     });
     
@@ -24,8 +27,7 @@ describe('AssistantPanel Component', () => {
     const input = screen.getByPlaceholderText(/Ask anything/i);
     fireEvent.change(input, { target: { value: 'Hello' } });
     
-    const form = input.closest('form');
-    fireEvent.submit(form);
+    fireEvent.submit(input.closest('form'));
     
     expect(await screen.findByText('Hello')).toBeInTheDocument();
     expect(await screen.findByText('Mock AI response')).toBeInTheDocument();
@@ -33,13 +35,15 @@ describe('AssistantPanel Component', () => {
 
   it('handles API errors', async () => {
     fetch.mockResolvedValueOnce({
+      ok: false,
       json: async () => ({ error: 'Failed' })
     });
     
     render(<AssistantPanel isOpen={true} onClose={vi.fn()} />);
     
-    fireEvent.change(screen.getByPlaceholderText(/Ask anything/i), { target: { value: 'Hello' } });
-    fireEvent.submit(screen.getByPlaceholderText(/Ask anything/i).closest('form'));
+    const input = screen.getByPlaceholderText(/Ask anything/i);
+    fireEvent.change(input, { target: { value: 'Hello' } });
+    fireEvent.submit(input.closest('form'));
     
     expect(await screen.findByText('Sorry, something went wrong. Please try again.')).toBeInTheDocument();
   });
@@ -47,9 +51,9 @@ describe('AssistantPanel Component', () => {
   it('handles empty input gracefully', () => {
     render(<AssistantPanel isOpen={true} onClose={vi.fn()} />);
     
-    fireEvent.submit(screen.getByPlaceholderText(/Ask anything/i).closest('form'));
+    const input = screen.getByPlaceholderText(/Ask anything/i);
+    fireEvent.submit(input.closest('form'));
     
-    // Should not fetch
     expect(fetch).not.toHaveBeenCalled();
   });
 });
